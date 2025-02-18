@@ -30,8 +30,10 @@ class CD{
     
     static let txt1 = Color(hex:"#FFFFFF")
     static let txt2 = Color(hex: "#D1D1D6")
-    
-    static let acc = Color(hex: "#8E44AD")
+    //#dd0000
+    //#8E44AD
+    static let acc = Color(hex: "8e44ad")
+    static let acc2 = Color(hex: "#cc52ff")
     static let accHover = Color(hex: "#DCC6E0")
     
     static let error = Color(hex: "#E74C3C")

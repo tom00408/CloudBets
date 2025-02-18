@@ -11,7 +11,10 @@ struct imageURLViewFeed: View {
                     AsyncImage(url: URL(string: url)) { phase in
                         switch phase {
                         case .empty:
-                            ProgressView() // Lade-Spinner
+                            ProgressView()
+                                .frame(
+                                    width: geometry.size.width*0.6
+                                ) // Lade-Spinner
                         case .success(let loadedImage):
                             loadedImage
                                 .resizable()
@@ -25,6 +28,7 @@ struct imageURLViewFeed: View {
                                 .scaledToFit()
                                 .frame(width: geometry.size.width * 0.90)
                                 .foregroundColor(.gray)
+                                .cornerRadius(16)
                         @unknown default:
                             EmptyView()
                         }
@@ -34,7 +38,7 @@ struct imageURLViewFeed: View {
             //.tabViewStyle(.page(indexDisplayMode: .always)) // 🔥 Snapping mit Seiten-Indikator
             //.indexViewStyle(.page(backgroundDisplayMode: .interactive)) // 🔥 Kleiner Punkt-Indikator unten
         }
-        .frame(height: getDynamicHeight()) // 🔥 Dynamische Höhe für verschiedene Geräte
+        .frame(height: getDynamicHeight()+100) // 🔥 Dynamische Höhe für verschiedene Geräte
     }
     
     /// Berechnet die Höhe für iPhone & iPad dynamisch

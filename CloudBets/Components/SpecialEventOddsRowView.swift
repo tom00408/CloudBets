@@ -7,19 +7,19 @@
 
 import SwiftUI
 
-struct EventOddsRowView: View {
+struct SpecialEventOddsRowView: View {
     
     @EnvironmentObject var placeBetVM: PlaceBetViewModel
     
     let event: Event
+    let market: Market?
     
     var isSelected : Bool = true
     
     var body: some View {
         
         
-        if let firstMarket = event.bookmaker.markets.first {
-            VStack{
+        if let firstMarket = market {
                 HStack() { // Abstand zwischen den Outcomes
                     Spacer()
                     ForEach(firstMarket.outcomes.sorted(by: sortOutcomes), id: \.id) { outcome in
@@ -64,7 +64,7 @@ struct EventOddsRowView: View {
                                         .font(.caption)
                                         .foregroundColor(CD.txt2)
                                 }
-                                
+
                             }
                             .padding(.vertical, 8)
                             .padding(.horizontal, 12)
@@ -85,10 +85,6 @@ struct EventOddsRowView: View {
                     }
                     Spacer()
                 }
-                Text("\(firstMarket.type)")
-                    .font(.system(size: 10))
-                    .foregroundColor(CD.warning)
-            }
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: 12)
@@ -138,5 +134,8 @@ struct EventOddsRowView: View {
 }
 
 #Preview {
-    EventOddsRowView(event : Sport.realSample.events.first!)
+    SpecialEventOddsRowView(
+        event : Sport.realSample.events.first!,
+        market: Event.sample.bookmaker.markets.first
+    )
 }

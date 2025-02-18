@@ -24,87 +24,27 @@ struct HomeView: View {
                     Text("Feed")
                         .foregroundColor(CD.acc)
                     
-                    
-                    /*
-                    news und upcoming matches Images
-                     */
-                    if !viewModel.newsImageUrls.isEmpty{
-                        Text("News")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .foregroundColor(CD.acc)
-                        ImageViewHorizontal(imageUrls: viewModel.newsImageUrls)
-                    }
-                    if !viewModel.matchesImageUrls.isEmpty{
-                        Text("Upcoming Matches") 
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .foregroundColor(CD.acc)
-                        ImageViewHorizontal(imageUrls: viewModel.matchesImageUrls)
-                    }
-                    /*
-                    ForEach(viewModel.trollImageUrls, id: \.self) { url in
-                        Text("Test")
-                            .foregroundColor(CD.acc)
-                        imageURLViewFeed(url: url)
-                    }*/
-                    Text("SHUFFLE")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundStyle(CD.acc)
-                    
-                    ForEach(viewModel.getAllUrls(), id: \.self) { url in
-                        imageURLViewFeed(url: url)
+                    ForEach(Array(viewModel.items.enumerated()), id: \.offset) { _, view in
+                        view
                     }
                     
                     
                 }
             }.refreshable {
-                await viewModel.loadImages()
-            }
-        }
-        
-    }
-}
-
-#Preview {
-    HomeView()
-}
-/*
-struct ImageViewHorizontal: View{
-    
-    var imageUrls: [String]
-    
-    var body: some View{
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 10) {
-                ForEach(imageUrls, id: \.self) { url in
-                    AsyncImage(url: URL(string: url)) { phase in
-                        switch phase {
-                        case .empty:
-                            ProgressView() // Lade-Spinner
-                        case .success(let loadedImage):
-                            loadedImage
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 400, height: 400)
-                                .cornerRadius(10)
-                        case .failure:
-                            Image(systemName: "photo")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 150)
-                                .foregroundColor(.gray)
-                        @unknown default:
-                            EmptyView()
-                        }
-                    }
+                await viewModel.loadImages()   // Bilder neu laden
+                let newEvents = await viewModel.fetchEvents()  // Events neu laden
+                let newBets = await viewModel.fetchBets()      // Wetten neu laden
+                
+                DispatchQueue.main.async {
+                    viewModel.events = newEvents
+                    viewModel.bets = newBets
+                    viewModel.shuffleItems()  // UI-Elemente neu mischen
                 }
             }
-            .padding()
         }
     }
 }
-*/
-
-
+    
+    #Preview {
+        HomeView()
+    }

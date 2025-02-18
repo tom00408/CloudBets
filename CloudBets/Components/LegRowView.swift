@@ -40,12 +40,12 @@ struct LegRowView: View {
                 }
                 
                 VStack(spacing: 4) {
-                    Text("Odds: \(leg.odds.toOddString())")
+                    Text("x\(leg.odds.toOddString())")
                         .font(.body)
                         .foregroundColor(CD.success)
                     
                     if let points = leg.points {
-                        Text("Points: \(points.toOddString())")
+                        Text("\(leg.market == "spreads" && points > 0 ? "+" : "")\(points.toOddString())")
                             .font(.caption)
                             .foregroundColor(CD.txt2)
                     }

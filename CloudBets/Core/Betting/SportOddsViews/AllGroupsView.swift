@@ -27,7 +27,7 @@ struct AllGroupsView: View {
             }
             .refreshable {
                 sportOddsVM.fetchSports()
-            }
+            }.accentColor(CD.acc)
             .padding()
         }
     }

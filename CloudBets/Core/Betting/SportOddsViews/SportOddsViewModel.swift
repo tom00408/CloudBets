@@ -12,7 +12,7 @@ class SportOddsViewModel: ObservableObject {
     }
     
     func fetchSports() {
-        db.collection("NewSystem").getDocuments { snapshot, error in
+        db.collection("Quoten").getDocuments { snapshot, error in
             if let error = error {
                 print("Fehler beim Abrufen der Daten: \(error)")
                 return

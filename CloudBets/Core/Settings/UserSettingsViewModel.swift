@@ -25,9 +25,9 @@ final class UserSettingsViewModel: ObservableObject{
     func loadCurrentUser() async {
         do {
             let authDataResult = try AuthenticationManager.shared.getAuthenticatedUser()
-            print("authDataResult geladen✅ \(authDataResult.uid)")
+            //print("authDataResult geladen✅ \(authDataResult.uid)")
             self.user = try await UserManager.shared.getUser(userId: authDataResult.uid)
-            print("User Loaded in Profile View: \(String(describing: self.user))")
+            //print("User Loaded in Profile View: \(String(describing: self.user))")
         } catch {
             print("Error loading user: \(error.localizedDescription)")
         }

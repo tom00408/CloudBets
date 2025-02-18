@@ -36,7 +36,7 @@ struct ContentView: View {
                     .navigationBarHidden(true)
             }
             .tabItem {
-                Label("odds", systemImage: "book.pages")
+                Label("Suche", systemImage: "magnifyingglass")
             }
             
             NavigationStack {
@@ -46,20 +46,32 @@ struct ContentView: View {
                     
             }
             .tabItem {
-                Label("Wette plazieren", systemImage: "plus.app")
-            }
-            .badge(placeBetVM.legs.count)
-            
-            NavigationStack {
-                MyBetsView()
-                    .navigationTitle("Meine Wetten")
-                    .navigationBarHidden(true)
+                Label("Wetten",systemImage: "plus.app")
             }
 
+
+            .badge(placeBetVM.legs.count)
+            
+            
+            NavigationStack{
+                ChallengeView()
+            }
+            .tabItem {
+                Label("Challenges",systemImage: "trophy")
+            }
+            
+            
+            NavigationStack {
+                MyBetsView(showSignInView: $showSignInView)
+                    .navigationTitle("Deine Wetten")
+                    
+            }
             .tabItem {
                 Label("Meine Wetten", systemImage: "list.bullet.clipboard")
             }
             
+            
+           /*y
             NavigationStack {
                 ProfileView(showSignInView: $showSignInView)
                     .navigationTitle("Profil")
@@ -68,7 +80,7 @@ struct ContentView: View {
             }
             .tabItem {
                 Label("Profil", systemImage: "person.circle")
-            }
+            }*/
         }
         .accentColor(CD.acc) // Farbe für aktive Tabs und Inhalte
         .environment(\.horizontalSizeClass, .compact)
@@ -79,4 +91,5 @@ struct ContentView: View {
 #Preview {
     ContentView(showSignInView: .constant(false))
         .environmentObject(PlaceBetViewModel())
+        .environmentObject(SportOddsViewModel())
 }

@@ -32,8 +32,8 @@ struct Leg: Codable, Identifiable, Equatable {
     
     let sportGroup: String?
     
-    var status: BettingStatus
-    var score: Score? = nil
+    var status: String
+    var score: Score?
     
     static let sample = Leg(
         
@@ -45,7 +45,7 @@ struct Leg: Codable, Identifiable, Equatable {
         odds: 2.0,
         points: nil,
         sportGroup: "Soccer",
-        status: BettingStatus.pending
+        status: BettingStatus.pending.rawValue
     )
     
     static let sample2 = Leg(
@@ -57,7 +57,7 @@ struct Leg: Codable, Identifiable, Equatable {
         odds: 1.8,
         points: -1.5,
         sportGroup: "Soccer",
-        status: BettingStatus.pending
+        status: BettingStatus.lost.rawValue
     )
     
     
@@ -80,24 +80,39 @@ struct Leg: Codable, Identifiable, Equatable {
 
 struct Bet: Codable, Identifiable{
     
-    var id  = UUID()
-    var userId : String
+    var id : String = UUID().uuidString
+    var userId : String?
     
     let stake: String
     let odds: Double
     let legs: [Leg]
     
-    var status : BettingStatus = .pending
+    var status : String = BettingStatus.pending.rawValue
     
     var locks: Int = 0
     var reBets: Int = 0
     
     
-    
+    //🪜1️⃣2️⃣5️⃣🔒🔁
+    func getEmoji(string : String) -> String{
+        switch string{
+        case "Leiter":
+            return "🪜"
+        case "1":
+            return "1️⃣"
+        case "2":
+            return "2️⃣"
+        case "5":
+            return "5️⃣"
+        default:
+            return string
+            
+        }
+    }
 }
 
 
-enum BettingStatus: Codable{
+enum BettingStatus: String, Codable{
     case pending
     case won
     case lost

@@ -5,7 +5,7 @@ struct PlaceBetView: View {
     @EnvironmentObject var placeBetVM: PlaceBetViewModel
     
     @State private var choosingStake: Bool = false
-    @State private var stakeOptions: [String] = ["Leiter", "1", "2", "5", "10", "20", "50", "100", "200", "300"]
+    @State private var stakeOptions: [String] = ["Leiter", "1", "2", "5"]
     
     var body: some View {
         ZStack {
@@ -46,7 +46,7 @@ struct PlaceBetView: View {
                                     placeBetVM.setStake(stake: stake)
                                     choosingStake = false
                                 } label: {
-                                    Text("\(stake)")
+                                    Text("\(placeBetVM.getEmoji(string: stake))")
                                         .foregroundColor(CD.txt1)
                                         .padding(.horizontal, 16)
                                         .padding(.vertical, 8)
@@ -93,7 +93,7 @@ struct PlaceBetView: View {
                             Text("Einsatz")
                                 .font(.caption)
                                 .foregroundColor(CD.txt2)
-                            Text("\(placeBetVM.stake)")
+                            Text("\(placeBetVM.getEmoji(string: placeBetVM.stake))")
                                 .font(.body)
                                 .fontWeight(.bold)
                                 .foregroundColor(CD.txt1)
@@ -132,7 +132,10 @@ struct PlaceBetView: View {
                  */
                 Button {
                     print("Place Bet")
-                    placeBetVM.placeBet()
+                    
+                    Task{
+                        await placeBetVM.placeBet()
+                    }
                 } label: {
                     HStack {
                         Text("Wette abgeben")
@@ -158,6 +161,10 @@ struct PlaceBetView: View {
                 .disabled(!placeBetVM.isBetValid || choosingStake) // 🔥 Fix: Logik für Disabled-Funktion angepasst
                 .padding(.top, 10)
                 .padding(.bottom, 15)
+            }
+        }.onAppear{
+            Task {
+                await placeBetVM.loadCurrentUser()
             }
         }
     }
