@@ -6,14 +6,16 @@ struct EventRowView: View {
     
     var body: some View {
         VStack(spacing: 12) {
-            Text(formattedDate(event.commence_time))
+            Text(
+                Utilities.shared.formattedDate(event.startTime)
+            )
                 .font(.caption)
                 .fontWeight(.bold)
                 .foregroundColor(CD.txt2)
 
             HStack {
                 Spacer()
-                Text(event.home_team)
+                Text(event.homeTeam)
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(CD.txt1)
@@ -22,7 +24,7 @@ struct EventRowView: View {
                     .font(.title3)
                     .foregroundColor(CD.acc)
                 Spacer()
-                Text(event.away_team)
+                Text(event.awayTeam)
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(CD.txt1)
@@ -38,16 +40,9 @@ struct EventRowView: View {
         .padding(.horizontal)
     }
     
-    func formattedDate(_ dateString: String) -> String {
-        let formatter = ISO8601DateFormatter()
-        if let date = formatter.date(from: dateString) {
-            let displayFormatter = DateFormatter()
-            displayFormatter.dateStyle = .medium
-            displayFormatter.timeStyle = .short
-            return displayFormatter.string(from: date)
-        }
-        return "Invalid Date"
-    }
+    
+    
+    
 }
 
 #Preview {

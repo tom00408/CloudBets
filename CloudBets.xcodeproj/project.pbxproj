@@ -9,15 +9,32 @@
 /* Begin PBXBuildFile section */
 		3123AD982D3AA8B900F42C41 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 3123AD972D3AA8B900F42C41 /* FirebaseCore */; };
 		3123AD9A2D3AA8B900F42C41 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3123AD992D3AA8B900F42C41 /* FirebaseFirestore */; };
+		313D90DF2D4C70780039C378 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 313D90DE2D4C70780039C378 /* FirebaseAuth */; };
+		315B61782D4E4AAA005C16FE /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 315B61772D4E4AAA005C16FE /* GoogleSignIn */; };
+		315B617A2D4E4AAA005C16FE /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 315B61792D4E4AAA005C16FE /* GoogleSignInSwift */; };
+		3177DDA72D50EBD0001D5FC2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3177DDA62D50EBD0001D5FC2 /* FirebaseStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3123AD1C2D395DC700F42C41 /* CloudBets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudBets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		315B617C2D4E4AE3005C16FE /* Exceptions for "CloudBets" folder in "CloudBets" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 3123AD1B2D395DC700F42C41 /* CloudBets */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3123AD1E2D395DC700F42C41 /* CloudBets */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				315B617C2D4E4AE3005C16FE /* Exceptions for "CloudBets" folder in "CloudBets" target */,
+			);
 			path = CloudBets;
 			sourceTree = "<group>";
 		};
@@ -28,8 +45,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				315B617A2D4E4AAA005C16FE /* GoogleSignInSwift in Frameworks */,
 				3123AD982D3AA8B900F42C41 /* FirebaseCore in Frameworks */,
+				315B61782D4E4AAA005C16FE /* GoogleSignIn in Frameworks */,
+				313D90DF2D4C70780039C378 /* FirebaseAuth in Frameworks */,
 				3123AD9A2D3AA8B900F42C41 /* FirebaseFirestore in Frameworks */,
+				3177DDA72D50EBD0001D5FC2 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				3123AD1E2D395DC700F42C41 /* CloudBets */,
+				313D90DD2D4C70780039C378 /* Frameworks */,
 				3123AD1D2D395DC700F42C41 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +72,13 @@
 				3123AD1C2D395DC700F42C41 /* CloudBets.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		313D90DD2D4C70780039C378 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +103,10 @@
 			packageProductDependencies = (
 				3123AD972D3AA8B900F42C41 /* FirebaseCore */,
 				3123AD992D3AA8B900F42C41 /* FirebaseFirestore */,
+				313D90DE2D4C70780039C378 /* FirebaseAuth */,
+				315B61772D4E4AAA005C16FE /* GoogleSignIn */,
+				315B61792D4E4AAA005C16FE /* GoogleSignInSwift */,
+				3177DDA62D50EBD0001D5FC2 /* FirebaseStorage */,
 			);
 			productName = CloudBets;
 			productReference = 3123AD1C2D395DC700F42C41 /* CloudBets.app */;
@@ -105,6 +138,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				3123AD962D3AA8B900F42C41 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				315B61762D4E4AAA005C16FE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3123AD1D2D395DC700F42C41 /* Products */;
@@ -268,6 +302,7 @@
 				DEVELOPMENT_TEAM = K772DG59JN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CloudBets/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -298,6 +333,7 @@
 				DEVELOPMENT_TEAM = K772DG59JN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CloudBets/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -348,6 +384,14 @@
 				minimumVersion = 11.7.0;
 			};
 		};
+		315B61762D4E4AAA005C16FE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -360,6 +404,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3123AD962D3AA8B900F42C41 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		313D90DE2D4C70780039C378 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3123AD962D3AA8B900F42C41 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		315B61772D4E4AAA005C16FE /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 315B61762D4E4AAA005C16FE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		315B61792D4E4AAA005C16FE /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 315B61762D4E4AAA005C16FE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+		3177DDA62D50EBD0001D5FC2 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3123AD962D3AA8B900F42C41 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

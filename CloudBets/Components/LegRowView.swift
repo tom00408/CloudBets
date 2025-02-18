@@ -40,12 +40,12 @@ struct LegRowView: View {
                 }
                 
                 VStack(spacing: 4) {
-                    Text("Odds: \(leg.odds.toOddString())")
+                    Text("x\(leg.odds.toOddString())")
                         .font(.body)
-                        .foregroundColor(CD.succes)
+                        .foregroundColor(CD.success)
                     
                     if let points = leg.points {
-                        Text("Points: \(points.toOddString())")
+                        Text("\(leg.market == "spreads" && points > 0 ? "+" : "")\(points.toOddString())")
                             .font(.caption)
                             .foregroundColor(CD.txt2)
                     }
@@ -86,13 +86,12 @@ struct LegRowView: View {
     }
     
     func displayOutcome(outcomeName : String)->String{
-        if let event = leg.event{
-            if outcomeName == event.home_team{
-                return "1"
-            }
-            if outcomeName == event.away_team{
-                return "2"
-            }
+        
+        if outcomeName == leg.homeTeam{
+            return "1"
+        }
+        if outcomeName == leg.awayTeam{
+            return "2"
         }
         if outcomeName == "Draw"{
             return "X"

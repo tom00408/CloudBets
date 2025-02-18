@@ -36,7 +36,7 @@ struct SportRowView: View {
             Text(String(sport.events.count))
                 .font(.headline)
                 .fontWeight(.bold)
-                .foregroundColor(CD.succes)
+                .foregroundColor(CD.success)
                 .padding()
         }
         .padding()
