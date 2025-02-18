@@ -41,3 +41,10 @@ Für Fragen oder Feedback kannst du mich per E-Mail unter tom00408@aol.com errei
 ---
 Vielen Dank für dein Interesse an CloudBets!
 
+## Preview
+
+<p align="center">
+  <img src="./Screenshots/feed.jpeg" alt="Feed" width="30%">
+  <img src="./Screenshots/odds.jpeg" alt="Feed" width="30%">
+  <img src="./Screenshots/wetten.jpeg" alt="Feed" width="30%">
+</p>
