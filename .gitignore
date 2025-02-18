@@ -1,1 +1,2 @@
-CloudBets/**/*.plist
+# Ignoriere alle .plist-Dateien
+*.plist
